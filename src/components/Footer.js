@@ -4,7 +4,6 @@ import { View, StyleSheet, Text } from '@react-pdf/renderer';
 const styles = StyleSheet.create({
 	footer: {
 		border: '1px solid black',
-		marginTop: 'auto',
 		height: '10vh',
 		justifyContent: 'center',
 	},
