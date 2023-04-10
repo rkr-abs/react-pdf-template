@@ -1,12 +1,7 @@
 import { React } from 'react';
-import {
-	PDFViewer,
-	StyleSheet,
-	Document,
-	Page,
-	Text,
-} from '@react-pdf/renderer';
 import './App.scss';
+import { PDFViewer, StyleSheet, Document } from '@react-pdf/renderer';
+import PageComp from './components/PageComp';
 
 const styles = StyleSheet.create({
 	frame: {
@@ -19,9 +14,7 @@ const App = () =>
 	<div className="App">
 		<PDFViewer style={ styles.frame }>
 			<Document>
-				<Page size="A4">
-					<Text>Ready to Start...</Text>
-				</Page>
+				<PageComp/>
 			</Document>
 		</PDFViewer>
 	</div>
