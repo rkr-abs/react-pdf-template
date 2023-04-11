@@ -1,23 +1,24 @@
 import React from 'react';
-import { View, StyleSheet, Text } from '@react-pdf/renderer';
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import PageManager from '../services/PageManager';
 
 const styles = StyleSheet.create({
 	header: {
-		border: '1px solid black',
 		height: '10vh',
 		justifyContent: 'center',
+		border: '1px solid black',
 	},
 	text: {
 		textAlign: 'center',
 	},
 });
 
-const Header = () =>
+const Header = ({ children }) =>
 	<View
 		render={ (props) =>
 			PageManager.isVisibility({ ...props, pageNo: 1 })
-			&& <Text style={ styles.text }>Header</Text> }
+			&& <Text style={ styles.text }>{children}</Text> }
+		fixed={ true }
 	/>;
 
 export default Header;
