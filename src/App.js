@@ -3,10 +3,11 @@
 import { React } from 'react';
 import './App.scss';
 import { PDFViewer, StyleSheet, Document } from '@react-pdf/renderer';
-import PageComp from './components/PageComp';
+import Page from './components/Page';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import PageNumber from './components/PageNumber';
 
 const styles = StyleSheet.create({
 	frame: {
@@ -19,7 +20,7 @@ const App = () =>
 	<div className="App">
 		<PDFViewer style={ styles.frame }>
 			<Document>
-				<PageComp>
+				<Page>
 					<Header>Header</Header>
 					<Body>Mollit aliquip quis cupidatat fugiat Lorem sit. Elit dolore laborum culpa anim exercitation commodo non irure sunt adipisicing. Laboris do labore ea est et cupidatat eiusmod excepteur et. Commodo enim ex velit nulla cupidatat labore esse anim. Consequat consectetur in proident est adipisicing pariatur do.
 
@@ -79,7 +80,8 @@ const App = () =>
 
 						Labore amet ullamco consequat ipsum est irure nulla quis occaecat voluptate aliquip irure exercitation. Cupidatat commodo magna minim qui. Consequat anim ea ea fugiat nisi deserunt consequat. Aute cupidatat occaecat pariatur eiusmod est magna minim aute aliquip laborum voluptate ea nostrud. Veniam officia excepteur aute laboris id deserunt ex laboris ut ullamco nulla sint cupidatat.</Body>
 					<Footer>Footer</Footer>
-				</PageComp>
+					<PageNumber/>
+				</Page>
 			</Document>
 		</PDFViewer>
 	</div>
