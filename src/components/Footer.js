@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text } from '@react-pdf/renderer';
+import PageManager from '../services/PageManager';
 
 const styles = StyleSheet.create({
 	footer: {
@@ -14,8 +15,10 @@ const styles = StyleSheet.create({
 });
 
 const Footer = () =>
-	<View style={ styles.footer } fixed={ true }>
-		<Text style={ styles.text }>Footer</Text>
-	</View>;
+	<View
+		render={ (props) =>
+			PageManager.isVisibility({ ...props, pageNo: 3 })
+	&& <Text style={ styles.text }>Footer</Text> }
+	/>;
 
 export default Footer;
