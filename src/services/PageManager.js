@@ -1,6 +1,5 @@
+const isVisible = ({ pageNumber, pageNo }) => pageNumber !== pageNo;
 
-const isVisibility = ({ pageNumber, pageNo }) => pageNumber !== pageNo;
-
-const PageManager = { isVisibility };
+const PageManager = { isVisible };
 
 export default PageManager;

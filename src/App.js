@@ -1,8 +1,6 @@
-/* eslint-disable max-len */
-/* eslint-disable max-lines-per-function */
 import { React } from 'react';
 import './App.scss';
-import { PDFViewer, StyleSheet, Document } from '@react-pdf/renderer';
+import { PDFViewer, StyleSheet, Document, Text } from '@react-pdf/renderer';
 import Page from './components/Page';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -16,23 +14,22 @@ const styles = StyleSheet.create({
 		height: '90vh',
 	},
 });
-const visibility = (data) => PageManager.isVisibility(data);
+const visibility = (data) => PageManager.isVisible({ ...data, pageNo: 1 });
 
 const App = () =>
 	<div className="App">
 		<PDFViewer style={ styles.frame }>
 			<Document>
 				<Page>
-					<Header { ...{ visibility } }>Header</Header>
+					<Header { ...{ visibility } }><Text>Header</Text></Header>
 					<Body>Body1</Body>
 					<Body>Body2</Body>
 					<Body>Body3</Body>
-					<Footer { ...{ visibility } }>Footer</Footer>
+					<Footer { ...{ visibility } }><Text>Footer</Text></Footer>
 					<PageNumber/>
 				</Page>
 			</Document>
 		</PDFViewer>
-	</div>
-;
+	</div>;
 
 export default App;
