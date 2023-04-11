@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
 		border: '1px solid black',
 		height: '10vh',
 		justifyContent: 'center',
+		marginTop: 'auto',
 	},
 	text: {
 		textAlign: 'center',
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 const Footer = () =>
-	<View style={ styles.footer }>
+	<View style={ styles.footer } fixed={ true }>
 		<Text style={ styles.text }>Footer</Text>
 	</View>;
 

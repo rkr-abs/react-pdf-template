@@ -15,6 +15,8 @@ const App = () =>
 		<PDFViewer style={ styles.frame }>
 			<Document>
 				<PageComp/>
+				<PageComp/>
+				<PageComp/>
 			</Document>
 		</PDFViewer>
 	</div>
