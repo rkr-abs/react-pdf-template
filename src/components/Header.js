@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
-import PageManager from '../services/PageManager';
 
 const styles = StyleSheet.create({
 	header: {
@@ -13,10 +12,10 @@ const styles = StyleSheet.create({
 	},
 });
 
-const Header = ({ children }) =>
+const Header = ({ children, visibility }) =>
 	<View
 		render={ (props) =>
-			PageManager.isVisibility({ ...props, pageNo: 1 })
+			visibility({ ...props, pageNo: 1 })
 			&& <Text style={ styles.text }>{children}</Text> }
 		fixed={ true }
 	/>;
