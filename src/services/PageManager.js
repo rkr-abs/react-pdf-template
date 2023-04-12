@@ -1,4 +1,4 @@
-const isVisible = ({ pageNumber, pageNo }) => pageNumber !== pageNo;
+const isVisible = ({ pageNumber, pages }) => !pages.includes(pageNumber);
 
 const getPageNumber = ({ data: { pageNumber, totalPages }, format = 'c/t' }) =>
 	format.replace('c', pageNumber).replace('t', totalPages);
