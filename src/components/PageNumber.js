@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from '@react-pdf/renderer';
+import PageManager from '../services/PageManager';
 
 const styles = StyleSheet.create({
 	pageNumber: {
@@ -13,12 +14,17 @@ const styles = StyleSheet.create({
 	},
 });
 
-const PageNumber = () =>
-	<Text
-		style={ styles.pageNumber }
-		render={ ({ pageNumber, totalPages }) =>
-			`${ pageNumber } / ${ totalPages }` }
-		fixed={ true }
-	/>;
+const PageNumber = (context) => {
+	const { style } = context;
+
+	return (
+		<Text { ...{
+			style: [styles.pageNumber, style],
+			render: (props) => PageManager
+				.getPageNumber({ ...context, data: props }),
+		} }
+		/>
+	);
+};
 
 export default PageNumber;
