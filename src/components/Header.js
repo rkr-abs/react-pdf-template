@@ -1,11 +1,13 @@
 import React from 'react';
 import { View } from '@react-pdf/renderer';
 
-const Header = ({ children, visibility }) =>
-	<View
-		render={ (props) =>
-			visibility(props) && children }
-		fixed={ true }
+const defaultVisibility = () => true;
+
+const Header = ({ children, visibility = defaultVisibility }) =>
+	<View { ...{
+		fixed: true,
+		render: (props) => visibility(props) && children,
+	} }
 	/>;
 
 export default Header;
