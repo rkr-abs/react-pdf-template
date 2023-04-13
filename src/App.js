@@ -22,16 +22,15 @@ const App = () =>
 					{ ...{
 						style: { objectFit: 'cover', height: '100vh' },
 						src: `${ process.env.PUBLIC_URL }/images/ironMan.jpg`,
-						alt: 'images',
+						alt: 'ironMan',
 					} }
 				/>
 			</Watermark>
-			<Header { ...visible }><Text>Header</Text></Header>
-			<Body><Text>Body1</Text></Body>
+			<Header { ...visible }> <Text>Header</Text> </Header>
+			<Body> <Text>Body</Text> </Body>
 			<Footer { ...visible }> <Text>Footer</Text> </Footer>
 			<PageNumber { ...{ style: { color: 'red' }} }/>
 		</Page>
-	</PdfViewer>
-;
+	</PdfViewer>;
 
 export default App;
