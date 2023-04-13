@@ -1,6 +1,7 @@
+/* eslint-disable max-lines-per-function */
 import { React } from 'react';
 import './App.scss';
-import { Text } from '@react-pdf/renderer';
+import { Text, Image } from '@react-pdf/renderer';
 import PdfViewer from './components/PdfViewer';
 import Page from './components/Page';
 import Header from './components/Header';
@@ -8,7 +9,7 @@ import Body from './components/Body';
 import Footer from './components/Footer';
 import PageNumber from './components/PageNumber';
 import PageManager from './services/PageManager';
-import WaterMark from './components/WaterMark';
+import Watermark from './components/Watermark';
 
 const visible = {
 	visibility: (data) => PageManager.isVisible(data),
@@ -17,7 +18,15 @@ const visible = {
 const App = () =>
 	<PdfViewer>
 		<Page>
-			<WaterMark/>
+			<Watermark>
+				<Image
+					{ ...{
+						style: { objectFit: 'cover', height: '100vh' },
+						src: `${ process.env.PUBLIC_URL }/images/ironMan.jpg`,
+						alt: 'images',
+					} }
+				/>
+			</Watermark>
 			<Header { ...{ ...visible, pages: [1] } }>
 				<Text>Header</Text>
 			</Header>
@@ -32,6 +41,7 @@ const App = () =>
 			</Footer>
 			<PageNumber { ...{ style: { color: 'red' }} }/>
 		</Page>
-	</PdfViewer>;
+	</PdfViewer>
+;
 
 export default App;
