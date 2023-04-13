@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import { React } from 'react';
 import './App.scss';
 import { Text, Image } from '@react-pdf/renderer';
@@ -12,7 +11,7 @@ import PageManager from './services/PageManager';
 import Watermark from './components/Watermark';
 
 const visible = {
-	visibility: (data) => PageManager.isVisible(data),
+	visibility: (data) => PageManager.isVisible({ ...data, hideOnPage: 1 }),
 };
 
 const App = () =>
@@ -27,18 +26,9 @@ const App = () =>
 					} }
 				/>
 			</Watermark>
-			<Header { ...{ ...visible, pages: [1] } }>
-				<Text>Header</Text>
-			</Header>
-			<Body>
-				<Text>Body1</Text>
-			</Body>
-			<Body>
-				<Text>Body2</Text>
-			</Body>
-			<Footer { ...{ ...visible, pages: [1] } }>
-				<Text>Footer</Text>
-			</Footer>
+			<Header { ...visible }><Text>Header</Text></Header>
+			<Body><Text>Body1</Text></Body>
+			<Footer { ...visible }> <Text>Footer</Text> </Footer>
 			<PageNumber { ...{ style: { color: 'red' }} }/>
 		</Page>
 	</PdfViewer>
