@@ -1,15 +1,13 @@
 import React from 'react';
-import { PDFViewer, StyleSheet, Document } from '@react-pdf/renderer';
+import { PDFViewer, Document } from '@react-pdf/renderer';
 
-const styles = StyleSheet.create({
-	frame: {
-		width: '90vw',
-		height: '90vh',
-	},
-});
+const frame = {
+	width: '90vw',
+	height: '90vh',
+};
 
 const PdfViewer = ({ children }) =>
-	<PDFViewer style={ styles.frame }>
+	<PDFViewer style={ frame }>
 		<Document>{children}</Document>
 	</PDFViewer>;
 
