@@ -3,12 +3,12 @@ import { StyleSheet, View } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
 	body: {
-		flex: 1,
+		flexGrow: 1,
 	},
 });
 
 const Body = ({ children, style }) =>
-	<View { ...{ style: { ...styles, style }} }>
+	<View { ...{ style: { ...styles.body, ...style }} }>
 		{children}
 	</View>;
 

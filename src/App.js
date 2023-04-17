@@ -1,17 +1,21 @@
+/* eslint-disable max-len */
+/* eslint-disable no-magic-numbers */
+/* eslint-disable max-lines-per-function */
 import { React } from 'react';
 import './App.scss';
-import { Text, Image } from '@react-pdf/renderer';
+import { Image, Text } from '@react-pdf/renderer';
 import PdfViewer from './components/PdfViewer';
 import Page from './components/Page';
-import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import PageNumber from './components/PageNumber';
-import PageManager from './services/PageManager';
 import Watermark from './components/Watermark';
+import PageManager from './services/PageManager';
+import { range } from '@laufire/utils/collection';
+import { Header } from 'sample_react_library';
 
 const visible = {
-	visibility: (data) => PageManager.isVisible({ ...data, hideOnPage: 1 }),
+	visibility: (data) => PageManager.isVisible({ ...data, hideOnPage: 2 }),
 };
 
 const App = () =>
@@ -26,11 +30,29 @@ const App = () =>
 					} }
 				/>
 			</Watermark>
-			<Header { ...visible }> <Text>Header</Text> </Header>
-			<Body> <Text>Body</Text> </Body>
-			<Footer { ...visible }> <Text>Footer</Text> </Footer>
+			<Header><Text>Header</Text></Header>
+			<Body { ...{ style: {
+				backgroundColor: 'rgba(255,0,0,0.4)',
+			}} }
+			>
+				{range(0, 100).map((num, i) =>
+					<Text key={ i }>{num} - Body</Text>)}
+			</Body>
+			<Footer
+				{ ...{
+					...visible,
+					style: {
+						backgroundColor: 'rgba(0,255,0,0.4)',
+					},
+				} }
+			>
+				<Text>
+					FOoter
+				</Text>
+			</Footer>
 			<PageNumber { ...{ style: { color: 'red' }} }/>
 		</Page>
-	</PdfViewer>;
+	</PdfViewer>
+;
 
 export default App;
